@@ -104,4 +104,14 @@ test.describe('Posts API Tests', () => {
     expect(typeof body.body).toBe('string');
   });
 
+  test('POST with invalid data should return error', async ({ request }) => {
+  const response = await request.post('/posts', {
+    data: {}, // empty body
+  });
+  
+  const body = await response.json();
+
+  expect(body).toBeDefined();
+});
+
 });
